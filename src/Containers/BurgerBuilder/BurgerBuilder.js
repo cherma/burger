@@ -3,11 +3,8 @@ import Aux from '../../hoc/Aux';
 import Burger from '../../Components/Burger/Burger';
 import BuildControls from '../../Components/Burger/BuildControls/BuildControls';
 
-const INGREDIENT_PRICE  = {
-  cheese : 15,
-  bacon : 40,
-  salad : 25,
-  meat : 40 }
+const INGREDIENT_PRICE  = [15,40,25,40]//[cheese,bacon,salad,meat]
+
 class BurgerBuilder extends React.Component{
   state = { 
     ingredients : {
@@ -15,27 +12,31 @@ class BurgerBuilder extends React.Component{
     bacon : 0,
     salad : 0,
     meat : 0 
-    } , 
+    } ,
     totalPrice : 40
   }
-  addIngredientHandler = (type) => {
-    const oldCount = this.state.ingredients[type]
-    const updatedIngredients = {...this.state.ingredients}
-    const updatedCount = oldCount + 1;
-    updatedIngredients[type] = updatedCount;
-    const priceAddition = INGREDIENT_PRICE[type]
-    const oldPrice = this.state.totalPrice
-    const updatePrice = oldPrice + priceAddition;
-    this.setState({ingredients:updatedIngredients,totalPrice:updatePrice})
-  };
-  removeIngredientHandler = (type) => {
-    conts 
+  quantityHandler = (src,count) =>{
+    const newState = {...this.state.ingredients}
+    newState[src] = count;
+    
+    let price = 0
+      const keys = Object.keys(newState)
+      keys.map((item,i) =>  price=price+(newState[item]*INGREDIENT_PRICE[i]))
+      this.setState({totalPrice:40+price,ingredients:newState})
   }
+  
   render(){
+    
+      
+    
     return(
       <Aux>
+       
         <Burger ingredients={this.state.ingredients}/>
-        <BuildControls addIngredientHandler={this.addIngredientHandler}/>
+        <BuildControls 
+           ingredients={this.state.ingredients} 
+           quantityHandler={this.quantityHandler}
+           price={this.state.totalPrice}/>
       </Aux>
     );
   }

@@ -2,20 +2,21 @@ import React from 'react';
 import BuildControl from './BuildControl/BuildControl';
 import classes from './BuildControls.css';
 
-const control =[
-  {label:"Cheese",type:"cheese"},
-  {label:"Salad" ,type:"salad"},
-  {label:"Bacon" ,type:"bacon"},
-  {label:"Meat",type:"meat"}
-]
-
-const BuildControls =  (props) => (
+const BuildControls = (props) => {
+  const keys = Object.keys(props.ingredients)
+  return (
   <div className={classes.BuildControls}>
+    <p className={classes.price}>Total Price <strong>{props.price}</strong></p> 
     { 
-      control.map((ctrl,i)=>
-      <BuildControl key={ctrl.label+i} label={ctrl.label} add={()=>props.addIngredientHandler(ctrl.type)}/>)
+      keys.map((item)=>
+      <BuildControl 
+         key={item} 
+         label={item} 
+         count={props.ingredients[item]} 
+         quantityHandler={props.quantityHandler}/>)
     }
   </div>
-);
+  );
+}
 
 export default BuildControls;
