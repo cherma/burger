@@ -1,14 +1,39 @@
 .BuildControls{
   background-color: #FF7F50;
-  width:80%;
+  width:60%;
   box-shadow: 0 2px gray;
   display:flex;
   flex-flow: column;
-  justify-items: center;
+  align-items: center;
+  justify-items: space-evenly;
   margin: auto;
   padding: 5px 2px;
 }
-.BuildControls price{
+.BuildControls .price{
   margin-left: auto;
   margin-right: auto;
+}
+.BuildControls .orderbtn{
+  background-color: darkorange;
+  width: 30%;
+  font:inherit;
+  margin-top:10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 2px 2px;
+  cursor: pointer;
+  border:1px solid darkorange;
+  border-radius: 15px;
+  
+}
+
+.BuildControls .orderbtn:hover{
+  background-color: white;
+  border : 1px solid white;
+  box-shadow:  3px 2px 8px 7px #888888 ;
+}
+.BuildControls .orderbtn:disabled{
+  background-color: gray;
+  border: 1px solid darkgray;
 }

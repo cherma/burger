@@ -15,6 +15,7 @@ const BuildControls = (props) => {
          count={props.ingredients[item]} 
          quantityHandler={props.quantityHandler}/>)
     }
+    <button disabled={props.price===40} className={classes.orderbtn}>ORDER NOW!</button>
   </div>
   );
 }
