@@ -1,5 +1,5 @@
 import React from 'react';
-import BuildControl from './BuildControl/BuildControl';
+import BuildControl from '../BuildControl/BuildControl';
 import classes from './BuildControls.css';
 
 const BuildControls = (props) => {
@@ -15,7 +15,7 @@ const BuildControls = (props) => {
          count={props.ingredients[item]} 
          quantityHandler={props.quantityHandler}/>)
     }
-    <button disabled={props.price===40} className={classes.orderbtn}>ORDER NOW!</button>
+    <button disabled={props.price===40} className={classes.orderbtn} onClick={props.ordered}>ORDER NOW!</button>
   </div>
   );
 }
