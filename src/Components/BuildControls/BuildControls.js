@@ -6,7 +6,7 @@ const BuildControls = (props) => {
   const keys = Object.keys(props.ingredients)
   return (
   <div className={classes.BuildControls}>
-    <p className={classes.price}>Total Price <strong>{props.price}</strong></p> 
+    <p className={classes.price}>Current Price : <strong>{props.price}</strong></p> 
     { 
       keys.map((item)=>
       <BuildControl 

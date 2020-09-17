@@ -3,6 +3,7 @@ import Aux from '../../hoc/Aux';
 import Burger from '../../Components/Burger/Burger';
 import BuildControls from '../../Components/BuildControls/BuildControls';
 import OrderSummary from '../../Components/OrderSummary/OrderSummary';
+import Backdrop from '../../Components/Backdrop/Backdrop';
 
 const INGREDIENT_PRICE  = [15,40,25,40]//[cheese,bacon,salad,meat]
 
@@ -26,13 +27,21 @@ class BurgerBuilder extends React.Component{
     keys.map((item,i) =>  price=price+(newState[item]*INGREDIENT_PRICE[i]))
     this.setState({totalPrice:40+price,ingredients:newState})
   }
-  showOrderSummary = () =>{
-     this.setState({purchasing : true})
-  }
+
+  showOrderSummary = () =>{ this.setState({purchasing : true})}
+  hideOrderSummary = () =>{ this.setState({purchasing : false})} 
+  continueOrder = () =>{ alert('Order continues')} 
+  
   render(){
     return(
       <Aux>
-        {  this.state.purchasing && <OrderSummary ingredients={this.state.ingredients}/> };
+        <Backdrop show={this.state.purchasing} clicked={this.hideOrderSummary}/>
+        <OrderSummary 
+               ingredients={this.state.ingredients}
+               price={this.state.totalPrice} 
+               show={this.state.purchasing} 
+               continue={this.continueOrder}
+               cancel={this.hideOrderSummary}/>
         <Burger ingredients={this.state.ingredients}/>
         <BuildControls 
            ingredients={this.state.ingredients} 

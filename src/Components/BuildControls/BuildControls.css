@@ -24,13 +24,12 @@
   padding: 2px 2px;
   cursor: pointer;
   border:1px solid darkorange;
-  border-radius: 15px;
-  
+  border-radius: 15px; 
 }
 
 .BuildControls .orderbtn:hover{
-  background-color: white;
-  border : 1px solid white;
+  border : 1px solid black;
+  background-color: lightgoldenrodyellow;
   box-shadow:  3px 2px 8px 7px #888888 ;
 }
 .BuildControls .orderbtn:disabled{

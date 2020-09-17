@@ -1,0 +1,21 @@
+.Toolbar{
+  position: fixed;
+  top:0%;
+  left:0%;
+  height:56px;
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FF7F50;
+  z-index: 90;
+}
+.Toolbar .Logo{
+  background-color:  white;
+  height: calc(0.9* 56px);
+  padding:8px;
+  box-sizing: border-box;
+}
+.Toolbar img{
+  height: 100%;
+}
