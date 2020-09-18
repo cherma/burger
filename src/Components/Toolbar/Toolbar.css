@@ -7,15 +7,39 @@
   display:flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #FF7F50;
+  background-color: chocolate;
   z-index: 90;
+  box-sizing: border-box;
 }
 .Toolbar .Logo{
   background-color:  white;
   height: calc(0.9* 56px);
   padding:8px;
   box-sizing: border-box;
+  border-radius: 4px;
 }
 .Toolbar img{
   height: 100%;
+}
+.Toolbar .Menu{
+  display: block;
+  background-color: chocolate;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width:75px;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+.Toolbar .Menu:hover{
+  background-color:coral;
+  border-bottom: 4px solid #40a4cb;
+}
+@media (max-width:499px){
+  .Toolbar .DesktopOnly{
+    display:none ; 
+  }
 }

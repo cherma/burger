@@ -4,6 +4,7 @@
   margin: 5px  0px;
   justify-content: space-between;
   align-items: center;
+  width: auto;
 }
 .BuildControl button{
   width:80px;
@@ -44,4 +45,9 @@
 .BuildControl .more:disabled{
   background-color: gray;
   border: 1px solid darkgray;
+}
+@media (max-width:300px){
+  .BuildControl{
+    width: 200px;
+  }
 }

@@ -1,6 +1,6 @@
 .BuildControls{
   background-color: #FF7F50;
-  width:60%;
+  width:300px;
   box-shadow: 0 2px gray;
   display:flex;
   flex-flow: column;
@@ -35,4 +35,9 @@
 .BuildControls .orderbtn:disabled{
   background-color: gray;
   border: 1px solid darkgray;
+}
+@media (min-width:600px){
+  .BuildControls{
+    width:60%;
+  }
 }
