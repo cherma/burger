@@ -20,4 +20,7 @@
   .SideDrawer{
     display:none;
   }
+ .backdrop{
+    display:none;
+  }
 }

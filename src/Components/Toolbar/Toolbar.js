@@ -1,11 +1,12 @@
 import React from 'react';
 import classes from './Toolbar.css'; 
 import NavigationItems from './../NavigationItems/NavigationItems';
+import DrawerToggle from './../DrawerToggle/DrawerToggle';
 import image from './../../Assets/Logo/burger-logo.png';
 
-const Toolbar = () =>(
+const Toolbar = (props) =>(
     <div className={classes.Toolbar}>
-      <div className={classes.Menu}>Menu</div>
+      <DrawerToggle clicked={props.clicked}/>
       <div className={classes.Logo}><img src={image}  alt='logo'/></div>
       <div className={classes.DesktopOnly}><NavigationItems/></div> 
     </div>

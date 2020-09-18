@@ -17,6 +17,8 @@
   padding:8px;
   box-sizing: border-box;
   border-radius: 4px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .Toolbar img{
   height: 100%;
