@@ -5,6 +5,7 @@ import BuildControls from '../../Components/BuildControls/BuildControls';
 import OrderSummary from '../../Components/OrderSummary/OrderSummary';
 import Backdrop from '../../Components/Backdrop/Backdrop';
 import instance from './../../Axios/axios-orders';
+import withErrorHandler from '../../Components/withErrorHandler/withErrorHandler';
 
 const INGREDIENT_PRICE  = [15,40,25,40]//[cheese,bacon,salad,meat]
 
@@ -78,4 +79,4 @@ class BurgerBuilder extends React.Component{
   }
 }
 
-export default BurgerBuilder;
+export default withErrorHandler(BurgerBuilder);
