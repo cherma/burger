@@ -8,18 +8,32 @@ const withErrorHandler = (WrappedComponent, instance) =>{
     state ={
       error:null
     }
-    componentDidMount(){
-      instance.interceptors.response.use()
+    componentWillMount(){
+      instance.interceptors.request.use(req => {
+        this.setState({error: null});
+        return req;
+    });
+    instance.interceptors.response.use(res => res, error => {
+        this.setState({error: error});
+    });
     }
-    
+    errorConfirmedHandler = () => {
+      this.setState({error: null});
+  }
     render(){
       return(
       <Aux>
-          <Backdrop show/>
-          <div className={classes.ErrorMsg}>
-           <p>Something Didnt work</p> 
-          </div>
+          { this.state.error &&
+           <Aux> 
+             <Backdrop show clicked={this.errorConfirmedHandler}/>
+             <div className={classes.ErrorMsg}>
+               {this.state.error.message}
+             </div>
+            </Aux>
+            }
           <WrappedComponent {...this.props}/>
+          
+          
       </Aux>)
     }
   }
