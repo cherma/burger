@@ -8,15 +8,24 @@ const withErrorHandler = (WrappedComponent, instance) =>{
     state ={
       error:null
     }
+    
+    
     componentWillMount(){
-      instance.interceptors.request.use(req => {
+      this.reqInterceptor = instance.interceptors.request.use(req => {
         this.setState({error: null});
         return req;
     });
-    instance.interceptors.response.use(res => res, error => {
+     this.resInterceptor = instance.interceptors.response.use(res => res, error => {
         this.setState({error: error});
     });
     }
+
+    componentWillUnmount(){
+     instance.interceptors.request.eject(this.reqInterceptor) 
+     instance.interceptors.response.eject(this.resInterceptor)
+    }
+
+
     errorConfirmedHandler = () => {
       this.setState({error: null});
   }
