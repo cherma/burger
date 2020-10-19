@@ -33,6 +33,8 @@ const withErrorHandler = (WrappedComponent,instance) =>{
             </Aux>
           }
           <WrappedComponent {...this.props}/>
+          
+          
       </Aux>)
     }
   }
