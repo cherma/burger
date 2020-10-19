@@ -1,0 +1,18 @@
+.OtpPg{
+  width:100%;
+  background-color: aqua;
+  position: fixed;
+  
+  top:0;
+  left:0;
+  padding:30px 15px;
+  background-color: white;
+  transition: all 0.5s ease-out;
+  z-index: 100;
+}
+.Open{
+  transform: translateX(100%);
+}
+.Close{
+  transform: translateX(100%);
+}

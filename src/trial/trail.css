@@ -1,0 +1,18 @@
+.Trail{
+  width:100%;
+  
+  position: fixed;
+  height: 100%;
+  top:0;
+  left:0;
+  padding:30px 15px;
+  background-color: white;
+  transition: all 0.7s ease-out;
+  z-index: 100;
+}
+.Open{
+  transform: translateX(0);
+}
+.Close{
+  transform: translateX(-100%);
+}
