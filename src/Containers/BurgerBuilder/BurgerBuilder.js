@@ -42,32 +42,12 @@ class BurgerBuilder extends React.Component{
   showOrderSummary = () =>{ this.setState({purchasing : true})}
   hideOrderSummary = () =>{ this.setState({purchasing : false})} 
   continueOrder = () =>{ 
-    /*this.setState({loading: true})
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: 'Roopan',
-        address: {
-          doorNo: '32/1',
-          street: 'Teststreet',
-          locality: 'testLOcality',
-        },
-        phone: '75xxxxxx70'
-      },
-      deliveryMethod: 'Fastest'
-    }
-    instance.post('/orders.jso',order)
-             .then(res => {
-               this.setState({loading:false})
-               this.hideOrderSummary()
-              }).catch( error => {
-                this.setState( { loading: false, purchasing: false } );
-            } );*/
+    /**/
      const queryParams = []
      for(let i in this.state.ingredients){
        queryParams.push(i + '=' + this.state.ingredients[i])
      }        
+     queryParams.push('price='+this.state.totalPrice)
      const queryString = queryParams.join('&')
      this.props.history.push({
        pathname: '/checkout',
