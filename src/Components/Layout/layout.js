@@ -1,6 +1,6 @@
 import React from 'react';
 import Toolbar from './../Toolbar/Toolbar';
-import Aux from '../../hoc/Aux';
+import HOC from '../../hoc/HOC';
 import classes from './layout.css';
 import SideDrawer from '../SideDrawer/SideDrawer';
 
@@ -12,13 +12,13 @@ class Layout extends React.Component{
   hideSideDrawer = () =>{this.setState({showSideDrawer:false})}
   render(){
       return(
-        <Aux>
+        <HOC>
            <Toolbar clicked={this.openSideDrawer}/>
            <SideDrawer show={this.state.showSideDrawer} clicked={this.hideSideDrawer}/>
            <main className={classes.Content}>
              {this.props.children}
            </main>
-        </Aux>
+        </HOC>
       );
     }
   }

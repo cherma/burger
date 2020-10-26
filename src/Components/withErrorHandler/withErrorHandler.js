@@ -1,5 +1,5 @@
 import React from 'react';
-import Aux from './../../hoc/Aux';
+import HOC from './../../hoc/HOC';
 import Backdrop from '../Backdrop/Backdrop';
 import classes from './withErrorHandler.css';
 
@@ -22,20 +22,20 @@ const withErrorHandler = (WrappedComponent,instance) =>{
     }
     render(){
       return(
-      <Aux>
+      <HOC>
           {console.log(this.state.error)}
           {  this.state.error &&
-            <Aux>
+            <HOC>
              <Backdrop show clicked={this.errorConfirmationHandler}/>
              <div className={classes.ErrorMsg}>
                   <h1>{this.state.error}</h1>
               </div>
-            </Aux>
+            </HOC>
           }
           <WrappedComponent {...this.props}/>
           
           
-      </Aux>)
+      </HOC>)
     }
   }
 }
