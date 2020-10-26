@@ -5,7 +5,7 @@ import classes from './NavigationItems.css'
 const NavigationItems = () => (
   <div className={classes.NavigationItems}>
       <NavLink to='/' exact activeClassName={classes.active}>BurgerBuilder</NavLink>
-      <NavLink to='/orders' activeClassName={classes.active}>Orders</NavLink>
+      <NavLink to='/orders' activeClassName={classes.active}>orders</NavLink>
   </div>
 );
 

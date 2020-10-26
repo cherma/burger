@@ -1,3 +1,3 @@
-const HOC = (props) => props.children;
+const Hoc = (props) => props.children;
 
-export default HOC;
+export default Hoc;

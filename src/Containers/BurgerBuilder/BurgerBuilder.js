@@ -1,5 +1,5 @@
 import React from 'react';
-import HOC from '../../hoc/HOC';
+import Hoc from '../../Hoc/Hoc';
 import Burger from '../../Components/Burger/Burger';
 import BuildControls from '../../Components/BuildControls/BuildControls';
 import OrderSummary from '../../Components/OrderSummary/OrderSummary';
@@ -81,11 +81,11 @@ class BurgerBuilder extends React.Component{
        ]
       }
     return(
-      <HOC>
+      <Hoc>
         <Backdrop show={this.state.purchasing} clicked={this.hideOrderSummary}/>
         {orderSummary}
         {burger}
-      </HOC>
+      </Hoc>
     );
   }
 }

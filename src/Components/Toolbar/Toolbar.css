@@ -7,7 +7,7 @@
   display:flex;
   justify-content: space-between;
   align-items: center;
-  background-color: chocolate;
+  background-color: cHocolate;
   z-index: 90;
   box-sizing: border-box;
 }
@@ -25,7 +25,7 @@
 }
 .Toolbar .Menu{
   display: block;
-  background-color: chocolate;
+  background-color: cHocolate;
   box-sizing: border-box;
   height: 100%;
   display: flex;
