@@ -5,15 +5,10 @@ import CheckoutSummary from './../../Components/CheckoutSummary/checkoutSummary'
 
 class Checkout extends React.Component{
  state = {
-   ingredients: {
-     Cheese: 0,
-     Bacon: 0,
-     Salad: 0,
-     Meat: 0
-   },
+   ingredients: null,
    totalPrice:0
  }
- componentDidMount(){
+ componentWillMount(){
   const ingredients={} 
   let price = 0
   const query = new URLSearchParams(this.props.location.search)
@@ -39,7 +34,7 @@ class Checkout extends React.Component{
            ingredients={this.state.ingredients}
            checkoutContinue={this.checkoutContinueHandler}
            checkoutCancel={this.checkoutCancelHandler}/>
-        <Route path={this.props.match.path + '/contact-data'} render={() => <ContactData ingredients={this.state.ingredients} price={this.state.totalPrice}/>}/>   
+        <Route path={this.props.match.path + '/contact-data'} render={(props) => <ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} {...props}/>}/>   
      </div>
   );
  }

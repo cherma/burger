@@ -71,8 +71,9 @@ class BurgerBuilder extends React.Component{
                  cancel={this.hideOrderSummary}
                  loading={this.state.loading}/> )
       burger = [
-            <Burger ingredients={this.state.ingredients}/> ,
+            <Burger key='burger' ingredients={this.state.ingredients}/> ,
             <BuildControls 
+                key='buildControls'
                 ingredients={this.state.ingredients} 
                 quantityHandler={this.quantityHandler}
                 price={this.state.totalPrice}
