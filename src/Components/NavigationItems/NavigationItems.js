@@ -9,4 +9,4 @@ const NavigationItems = () => (
   </div>
 );
 
-export default NavigationItems; 
+export default NavigationItems;
