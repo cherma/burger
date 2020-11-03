@@ -1,5 +1,5 @@
 import React from 'react';
-import Hoc from '../../Hoc/Hoc';
+import HOC from '../../hoc/HOC';
 import Burger from '../../Components/Burger/Burger';
 import BuildControls from '../../Components/BuildControls/BuildControls';
 import OrderSummary from '../../Components/OrderSummary/OrderSummary';
@@ -22,7 +22,6 @@ class BurgerBuilder extends React.Component{
     instance.get('/ingredients.json').then((response=>
       this.getInitialPrice(response.data)))
       .catch(error=>{})
-      console.log("at componentdidmount")  
   }
   getInitialPrice(initialState){
     const keys = Object.keys(initialState)
@@ -81,11 +80,11 @@ class BurgerBuilder extends React.Component{
        ]
       }
     return(
-      <Hoc>
+      <HOC>
         <Backdrop show={this.state.purchasing} clicked={this.hideOrderSummary}/>
         {orderSummary}
         {burger}
-      </Hoc>
+      </HOC>
     );
   }
 }

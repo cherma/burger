@@ -3,37 +3,78 @@ import Button from './../../Components/CustomButton/Button';
 import classes from './ContactData.css';
 import  Spinner from '../../Components/Spinner/Spinner';
 import instance from './../../Axios/axios-orders';
+import Input from '../../Components/CustomInput/Input';
 
 class ContactData extends React.Component{
   state = {
-    name: '',
-    phone: '',
-    address: {
-      doorNo: '',
-      locality: '',
-      street: ''
+   orderForm: {
+    name: {
+      elementConfig: {
+        inputtype: 'input',
+        type: 'text',
+        placeholder: 'Name'
+      },  
+      value: '',
+      label: 'Name'
     },
-    loading: false
+    phone: {
+      elementConfig: {
+        inputtype: 'input',
+        type: 'text',
+        placeholder: 'Phone'
+      },  
+      value: '',
+      label: 'Phone'
+    },
+    doorNo: {
+      elementConfig: {
+        inputtype: 'input',
+        type: 'text',
+        placeholder: 'Door No.'
+      },  
+      value: '',
+      label: 'Door No.'
+    },
+    locality: {
+      elementConfig: {
+        inputtype: 'input',
+        type: 'text',
+        placeholder: 'Locality'
+      },  
+      value: '',
+      label: 'Locality'
+    },
+    street: {
+      elementConfig: {
+        inputtype: 'input',
+        type: 'text',
+        placeholder: 'Street'
+      },  
+      value: '',
+      label: 'Street'
+     },
+     deliveryMethod: {
+      elementConfig: {
+        inputtype: 'select',
+        options: [
+         'Fastest',
+         'Cheapest'
+        ] 
+      }  ,
+      value: 'Fastest',
+      label: 'Delivery Method'
+     },
+     loading: false
   }
-
+  }
   continueOrder = (event) =>{
      event.preventDefault();
      this.setState({loading: true})
-    const order = {
-      ingredients: this.props.ingredients,
-      price: this.props.price,
-      customer: {
-        name: this.state.name,
-        address: {
-          doorNo: this.state.doorNo,
-          street: this.state.street,
-          locality: this.state.locality,
-        },
-        phone: this.state.phone
-      },
-      deliveryMethod: 'Fastest'
-    }
-    instance.post('/orders.json',order)
+     let orderData = {}
+     for(let key in this.state.orderForm){
+       orderData[key]=this.state.orderForm[key].value;
+     }  
+     instance.post('/orders.json',orderData)
              .then(res => {
                this.setState({loading:false})
                this.props.history.push('/')
@@ -41,19 +82,36 @@ class ContactData extends React.Component{
                 this.setState( { loading: false} );
             } );
   }
-  changeHandler = (event,name) =>{
-    this.setState({[name]:event.target.value})
+  onChangeHandler = (event,name) =>{
+    const updatedOrderForm = {...this.state.orderForm};
+    const updatedFormElement = {...updatedOrderForm[name]};
+    updatedFormElement.value = event.target.value;
+    updatedOrderForm[name] = updatedFormElement;
+    this.setState({orderForm:updatedOrderForm}); 
+    console.log(this.state.orderForm)
   }
+  
   render(){
+    const formArrayElements = []
+    for(let key in this.state.orderForm)
+    formArrayElements.push({
+      id: key,  
+      elements: this.state.orderForm[key]
+    })
+     let formInputs = (
+      formArrayElements.map((element)=>(
+        <Input
+           key={element.id}
+           label={element.elements.label}
+           elementConfig={{...element.elements.elementConfig}}
+           changed={(event)=>this.onChangeHandler(event,element.id)}/>
+      ))
+    )
     let form = (
-    <form>
+    <form onSubmit={this.continueOrder}>
       <h4>Enter Your Contact Data</h4>
-      <input name='name' value={this.state.name} onChange={(event)=>this.changeHandler(event,'name')} type='text' placeholder='Enter your Name'/>
-      <input name='phone' value={this.state.phone} onChange={(event)=>this.changeHandler(event,'phone')} type='text' placeholder='Enter your Phone No'/>
-      <input name='doorNo' value={this.state.doorNo} onChange={(event)=>this.changeHandler(event,'doorNo')} type='text' placeholder='Enter your Door No'/>
-      <input name='locality' value={this.state.locality} onChange={(event)=>this.changeHandler(event,'locality')} type='text' placeholder='Enter your Locality'/>
-      <input name='street' value={this.state.street} onChange={(event)=>this.changeHandler(event,'street')} type='text' placeholder='Enter your Street'/>
-      <Button btntype='Success' clicked={this.continueOrder.bind(this)}>PLACE ORDER!</Button>
+      {formInputs}
+      <Button btntype='Success'>PLACE ORDER!</Button>
     </form>
     );
     if(this.state.loading)
