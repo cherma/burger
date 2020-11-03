@@ -1,7 +1,8 @@
 import React from 'react';
-import Hoc from './../../Hoc/Hoc';
+import HOC from './../../hoc/HOC';
 import Backdrop from '../Backdrop/Backdrop';
 import classes from './withErrorHandler.css';
+
 
 const withErrorHandler = (WrappedComponent,instance) =>{
   return class extends React.Component{
@@ -22,20 +23,19 @@ const withErrorHandler = (WrappedComponent,instance) =>{
     }
     render(){
       return(
-      <Hoc>
-          {console.log(this.state.error)}
-          {  this.state.error &&
-            <Hoc>
+      <HOC>
+            {  this.state.error &&
+            <HOC>
              <Backdrop show clicked={this.errorConfirmationHandler}/>
              <div className={classes.ErrorMsg}>
                   <h1>{this.state.error}</h1>
               </div>
-            </Hoc>
+            </HOC>
           }
           <WrappedComponent {...this.props}/>
           
           
-      </Hoc>)
+      </HOC>)
     }
   }
 }
